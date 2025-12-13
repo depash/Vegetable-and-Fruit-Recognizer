@@ -28,7 +28,7 @@ class VegetableCNN(nn.Module):
 
 model = VegetableCNN()
 model.load_state_dict(
-    torch.load("api/models/fruit_vegetable_model.pth", map_location="cpu")
+    torch.load("models/fruit_vegetable_model.pth", map_location="cpu")
 )
 model.eval()
 

@@ -37,7 +37,7 @@ export default function Home() {
     formData.append('file', selectedFile);
 
     try {
-      const response = await fetch('https://vegetable-and-fruit-recognizer.com/predict', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/predict`, {
         method: 'POST',
         body: formData,
       });
