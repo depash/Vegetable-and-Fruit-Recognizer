@@ -1,4 +1,6 @@
 from flask import Flask, request, jsonify
+from fastapi import FastAPI, UploadFile, File
+from fastapi.middleware.cors import CORSMiddleware
 from flask_cors import CORS
 import os
 import torch
@@ -6,7 +8,17 @@ import torch.nn as nn
 from torchvision import models, transforms
 from PIL import Image
 
-app = Flask(__name__)
+app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+model = torch.load("model.pth", map_location="cpu")
+model.eval()
 CORS(app)
 
 class VegetableCNN(nn.Module):
@@ -59,8 +71,8 @@ if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-@app.route('/predict', methods=['POST'])
-def predict_route():
+@app.post("/predict")
+async def predict(file: UploadFile = File(...)):
     if 'file' not in request.files:
         return jsonify({"error": "No file part in the request"}), 400
     
