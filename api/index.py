@@ -21,7 +21,7 @@ class VegetableCNN(nn.Module):
         return self.backbone(x)
     
 model = VegetableCNN()
-model.load_state_dict(torch.load("backend/models/fruit_vegetable_model.pth", map_location="cpu"))
+model.load_state_dict(torch.load("api/models/fruit_vegetable_model.pth", map_location="cpu"))
 model.eval()
 
 classes =   [

@@ -34,8 +34,6 @@ export default function Home() {
     setError(null);
 
     const formData = new FormData();
-    // IMPORTANT: In production, change the URL from 'http://127.0.0.1:5000/predict' to just '/api/predict'
-    // after deploying your Flask backend to the Vercel Serverless Function (as per the earlier guidance).
     formData.append('file', selectedFile);
 
     try {
