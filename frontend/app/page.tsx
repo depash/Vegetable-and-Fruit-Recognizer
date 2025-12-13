@@ -1,7 +1,7 @@
 'use client'; 
 
 import { useState } from 'react';
-import styles from './Home.module.css'; // <-- Import the module CSS
+import styles from '/Home.module.css'; // <-- Import the module CSS
 
 // Define the type for the prediction result
 interface PredictionResponse {
