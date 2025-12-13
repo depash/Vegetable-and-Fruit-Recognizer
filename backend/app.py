@@ -1,9 +1,13 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import os
 import torch
 import torch.nn as nn
 from torchvision import models, transforms
 from PIL import Image
+
+app = Flask(__name__)
+CORS(app)
 
 class VegetableCNN(nn.Module):
     def __init__(self, num_classes=44):
@@ -49,3 +53,39 @@ def predict_image_class(image_path: str) -> str:
     _, predicted_index = torch.max(outputs, 1)
     
     return classes[predicted_index.item()]
+
+UPLOAD_FOLDER = 'temp_uploads'
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+@app.route('/predict', methods=['POST'])
+def predict_route():
+    if 'file' not in request.files:
+        return jsonify({"error": "No file part in the request"}), 400
+    
+    file = request.files['file']
+    
+    if file.filename == '':
+        return jsonify({"error": "No selected file"}), 400
+
+    if file:
+        filepath = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
+        file.save(filepath)
+
+        try:
+            prediction = predict_image_class(filepath)
+            
+            os.remove(filepath)
+            
+            return jsonify({
+                "status": "success",
+                "prediction": prediction
+            })
+
+        except Exception as e:
+            os.remove(filepath)
+            return jsonify({"error": str(e)}), 500
+
+if __name__ == '__main__':
+    app.run(debug=True)
