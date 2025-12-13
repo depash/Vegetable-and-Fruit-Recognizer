@@ -1,0 +1,173 @@
+/* app/Home.module.css */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 1rem;
+    background-color: var(--color-background-soft);
+    /* Light gray background */
+}
+
+.title {
+    font-size: 2.5rem;
+    /* 3xl */
+    font-weight: 700;
+    /* bold */
+    margin-bottom: 2rem;
+    color: var(--color-text-dark);
+    text-align: center;
+}
+
+.card {
+    background-color: #ffffff;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    /* Subtle, deep shadow */
+    width: 100%;
+    max-width: 500px;
+}
+
+.inputGroup {
+    margin-bottom: 1.5rem;
+}
+
+.label {
+    display: block;
+    font-size: 0.875rem;
+    /* sm */
+    font-weight: 500;
+    /* medium */
+    color: black;
+    margin-bottom: 0.5rem;
+}
+
+.fileInput {
+    display: block;
+    width: 100%;
+    font-size: 0.875rem;
+    color: #374151;
+    /* gray-700 */
+    border: 1px solid #d1d5db;
+    /* gray-300 */
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #f9fafb;
+    /* gray-50 */
+    padding: 0.5rem;
+    transition: border-color 0.2s;
+}
+
+.fileInput:focus {
+    outline: none;
+    border-color: #10b981;
+    /* green-500 */
+}
+
+.button {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    color: #ffffff;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    background-color: #10b981;
+    /* A nice, vibrant green */
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover:not(:disabled) {
+    background-color: #059669;
+    /* Darker green on hover */
+}
+
+.buttonDisabled {
+    background-color: #6ee7b7;
+    /* Light green */
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.divider {
+    margin: 2rem 0;
+    border: none;
+    border-top: 1px solid #e5e7eb;
+}
+
+.resultArea {
+    text-align: center;
+}
+
+.message {
+    padding: 1.25rem;
+    border-radius: 8px;
+    border-width: 1px;
+}
+
+.messageError {
+    background-color: #fee2e2;
+    /* Red 100 */
+    color: #b91c1c;
+    /* Red 600 */
+    border-color: #fca5a5;
+    /* Red 300 */
+    font-weight: 500;
+}
+
+.messageSuccess {
+    background-color: #eff6ff;
+    /* Blue 100 */
+    color: #1d4ed8;
+    /* Blue 800 */
+    border-color: #93c5fd;
+    /* Blue 300 */
+}
+
+.resultLabel {
+    font-size: 1.125rem;
+    /* lg */
+    color: #4b5563;
+    /* gray-600 */
+    margin-bottom: 0.5rem;
+}
+
+.resultText {
+    font-size: 2rem;
+    /* 3xl */
+    font-weight: 800;
+    /* extrabold */
+    text-transform: uppercase;
+}
+
+.messagePlaceholder {
+    color: #6b7280;
+    /* gray-500 */
+    font-style: italic;
+}
+
+.imagePreviewContainer {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.previewTitle {
+    font-size: 1.25rem;
+    /* xl */
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--color-text-dark);
+}
+
+.imagePreview {
+    max-width: 12rem;
+    /* max-w-xs */
+    max-height: 12rem;
+    /* max-h-48 */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+}

@@ -1,0 +1,51 @@
+/* app/globals.css */
+
+/* * 🛑 IMPORTANT: REMOVE ALL @tailwind and @import "tailwindcss" 
+ * directives if you are fully moving away from Tailwind.
+ */
+
+/* Define Global Variables for a clean look */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --color-background-soft: #f4f6f9;
+  /* Used in Home.module.css */
+  --color-text-dark: #1f2937;
+  /* Gray 800 */
+  --color-text-medium: #4b5563;
+  /* Gray 600 */
+}
+
+/* * NOTE: The @theme inline block you had is not standard CSS 
+ * and was likely Tailwind-specific config, so we remove it.
+ */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --color-background-soft: #1f2937;
+    --color-text-dark: #f9fafb;
+    --color-text-medium: #d1d5db;
+  }
+}
+
+body {
+  /* Use the variables defined above */
+  background: var(--background);
+  color: var(--foreground);
+
+  /* Ensure a modern font is applied */
+  font-family: var(--font-geist-sans), Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure images don't overflow */
+img {
+  max-width: 100%;
+  height: auto;
+}
