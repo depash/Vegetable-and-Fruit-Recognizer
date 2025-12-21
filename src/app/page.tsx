@@ -1,9 +1,8 @@
-'use client'; 
+'use client';
 
 import { useState } from 'react';
-import styles from './Home.module.css'; // <-- Import the module CSS
+import styles from './Home.module.css';
 
-// Define the type for the prediction result
 interface PredictionResponse {
   status: string;
   prediction: string;
@@ -14,6 +13,15 @@ export default function Home() {
   const [prediction, setPrediction] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+
+  const supportedItems = [
+    'Bean', 'Brinjal', 'Broccoli', 'Cabbage', 'Carrot', 'Cauliflower', 'Cucumber',
+    'Papaya', 'Potato', 'Pumpkin', 'Radish', 'Tomato', 'apple', 'banana', 'beetroot',
+    'bell pepper', 'bitter gourd', 'bottle gourd', 'capsicum', 'chilli pepper',
+    'corn', 'eggplant', 'garlic', 'ginger', 'grapes', 'jalepeno', 'kiwi', 'lemon',
+    'lettuce', 'mango', 'onion', 'orange', 'pear', 'peas', 'pineapple', 'pomegranate',
+    'raddish', 'soy beans', 'spinach', 'sweetcorn', 'sweetpotato', 'turnip', 'watermelon'
+  ];
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -63,12 +71,10 @@ export default function Home() {
   };
 
   return (
-    // Replaced all Tailwind classes with semantic CSS Module classes
     <div className={styles.container}>
       <h1 className={styles.title}>🍎 Vegetable and Fruit Classifier 🥦</h1>
 
       <div className={styles.card}>
-        
         <div className={styles.inputGroup}>
           <label htmlFor="file-upload" className={styles.label}>
             1. Select Image
@@ -114,6 +120,18 @@ export default function Home() {
             </p>
           )}
         </div>
+      </div>
+
+      <div className={styles.infoNote}>
+        <p>
+          <strong>⚠️ Note:</strong> The backend may take a few minutes to spin up during the first request.
+        </p>
+        <details className={styles.details}>
+          <summary>View supported fruits & vegetables</summary>
+          <p className={styles.supportedList}>
+            {supportedItems.join(', ')}.
+          </p>
+        </details>
       </div>
 
       {selectedFile && (
